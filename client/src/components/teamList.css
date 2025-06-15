@@ -1,0 +1,23 @@
+.teamList {
+	display: flex;
+	gap: 20px;
+}
+
+.teamList .teamMember {
+	width: 25%;
+	z-index: 0;
+}
+
+.teamMember:nth-child(even) {
+	transform: translateY(70px);
+}
+
+.teamMember h3 {
+	font-size: 28px;
+	margin: 10px 0 15px 10px;
+}
+
+.teamMember p {
+	font-size: 20px;
+	margin-left: 10px;
+}

@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#home {
+	width: 100%;
+	min-height: 100vh;
+	min-height: calc(var(--vh, 1vh) * 100);
+	background-image: url(/img/homeFon.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	z-index: 1;
+	background-attachment: fixed;
+}
+
+#merch {
+	width: 100%;
+	min-height: 55vh;
+	background-image: url(/img/merchFon.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+	background-attachment: fixed;
+}
+#home::after {
+	position: absolute;
+	inset: 0;
+	display: block;
+	background-color: rgba(11, 12, 15, 0.42);
+	content: '';
+	z-index: 1;
+}
+
+.homeIcon {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 200px 5%;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2;
+	visibility: visible;
+	animation-duration: 2s;
+	animation-name: slideInUp;
+}
+
+@keyframes slideInUp {
+	0% {
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+		visibility: visible;
+	}
+	100% {
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+	}
+}
+
+#team {
+	width: 100%;
+	height: 100%;
+	padding-bottom: 150px;
+	display: flex;
+	background-color: white;
+	flex-direction: column;
+	align-items: center;
+	z-index: 3;
+	position: relative;
+}
+
+#team h2 {
+	margin: 45px 0 24px 0;
+	font-size: 64px;
+}
+
+#concerts {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	background-color: white;
+	width: 100%;
+	height: 75vh;
+	z-index: 1;
+}
+
+#album {
+	background-color: rgba(11, 12, 15, 0.62);
+	width: 100%;
+	min-height: 100vh;
+	min-height: calc(var(--vh, 1vh) * 100);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+
+	justify-content: center;
+	z-index: 0;
+	background-attachment: fixed;
+}
+
+.fon {
+	width: 100%;
+	height: 100vh;
+	background-image: url('/public/img/albom.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	display: block;
+	z-index: -2;
+}
+
+.fon::after {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(11, 12, 15, 0.62);
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	content: '';
+	z-index: 0;
+}
+
+.rotateElement {
+	transform: rotate(-90deg);
+	width: 80px;
+	height: 80px;
+	z-index: 1;
+}
+
+.rotateElement h2 {
+	font-size: 90px;
+	line-height: 46px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: nowrap;
+}
+
+.merchInfo {
+	width: 100%;
+	margin: 120px 0 0 60px;
+}
+
+.merchInfo h2 {
+	font-size: 36px;
+	line-height: 40px;
+	color: rgba(255, 255, 255, 1);
+	font-weight: 500;
+	text-transform: uppercase;
+	margin: -8px 0 0 -1px;
+}
+
+.merchInfo a {
+	display: flex;
+	width: max-content;
+	height: max-content;
+	font-size: 17px;
+	line-height: 54px;
+	color: rgba(30, 33, 41, 1);
+	font-weight: 700;
+	text-decoration: none;
+	text-transform: uppercase;
+	background-color: rgba(255, 255, 255, 1);
+	border: 2px solid rgba(255, 255, 255, 1);
+	padding: 0 45px 0 44px;
+	margin: 43px 0 0;
+	cursor: pointer;
+}
+
+.albumCard {
+	width: 100%;
+	margin: 0 110px 120px 60px;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	z-index: 1;
+}
+
+.albumCard div {
+	width: 50%;
+}
+
+.albumText h3 {
+	width: 100%;
+	font-size: 39px;
+	line-height: 40px;
+	font-weight: 600;
+	text-transform: uppercase;
+	padding: 15px 0 25px;
+}
+
+.albumText p {
+	width: 100%;
+	font-size: 18px;
+	line-height: 30px;
+	font-weight: 400;
+}
+
+.albumCard div {
+	margin: 120px 30px 0;
+}
+
+.albumText {
+	background-color: rgba(255, 255, 255, 1);
+	padding: 40px 70px 0 29px;
+	align-content: flex-start;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.alubomImg {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+}
+
+.alubomImg img {
+	width: 100%;
+	max-width: 450px;
+	height: auto;
+	margin: 0 0 20px 0;
+}
+
+.alubomImg a img {
+	width: 180px;
+	height: auto;
+	margin: 0;
+}
+
+.albumBtn {
+	width: max-content;
+	padding: 15px 25px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: white;
+	background-color: black;
+}
+
+.btnWrapper {
+	width: 100% !important;
+	margin: 40px 0 0 0 !important;
+	display: flex;
+	justify-content: end;
+}
+
+#anons {
+	width: 100%;
+	background-color: rgba(30, 33, 41, 0.62);
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	z-index: 1;
+}
+
+.anonsWrapper {
+	width: 100%;
+	max-width: 1646px;
+	margin: 30px 130px;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-wrap: wrap;
+	z-index: 1;
+}
+
+.anonsCards img {
+	width: 100%;
+	height: auto;
+}
+
+.anonsCards {
+	width: 26%;
+	margin: 30px;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.anonsCards p {
+	width: 100%;
+	font-size: 28px;
+	line-height: 28px;
+	color: rgba(255, 255, 255, 1);
+	font-weight: 500;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 26px 0 0;
+	flex: 1;
+}
+
+.anonsCards div {
+	width: 100%;
+	margin: 14px 0 0;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.anonsCards a {
+	width: calc(100% / 2 - 20px);
+	max-width: 120px;
+	margin: 20px 10px 0;
+}
+
+.anonsCards a img {
+	width: 100%;
+	height: auto;
+}
+
+#friends {
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 50vh;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	z-index: 1;
+}
+
+.wrapperCards {
+	width: 100%;
+	max-width: 1500px;
+	margin: 90px 0;
+	padding: 0 0 0 30px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.cardFriend {
+	width: 30%;
+	padding: 45px;
+	position: relative;
+	overflow: visible;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+}
+.cardFriend img {
+	width: 100%;
+	height: auto;
+}
+a {
+	color: rgba(255, 255, 255, 1);
+}
+footer {
+	width: 100%;
+	color: rgba(255, 255, 255, 1);
+	background-color: rgba(30, 33, 41, 1);
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+}
+
+footer div {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 170px;
+	position: relative;
+	overflow: visible;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+footer > div > div {
+	width: calc(100% / 2 - 60px);
+	position: relative;
+	overflow: visible;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+footer > div > div:nth-of-type(1) {
+	font-size: 16px;
+	line-height: 24px;
+	margin: 52px 30px 60px;
+	order: 2;
+	display: flex;
+	justify-content: flex-start;
+}
+
+footer > div > div:nth-of-type(2) {
+	font-size: 14px;
+	line-height: 24px;
+	margin: 51px 30px 65px;
+	order: 3;
+	opacity: 0.6;
+}
+
+footer > div > div:nth-of-type(1) > div > img {
+	width: 30px;
+	height: 30px;
+	margin: 0 10px 0 0;
+	filter: grayscale(100%);
+}
+
+footer > div > div:nth-of-type(1) > div {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: flex-start;
+	margin: 35px 0 0;
+}
+
+footer > div > div:nth-of-type(1) > a.en_phone {
+	font-size: 26px;
+	line-height: 24px;
+	margin: 10px 0 9px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+footer > div > div:nth-of-type(2) > p > span {
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+footer > div > div:nth-of-type(1) > p {
+	font-weight: 600;
+}
+
+.en_socseti_bottom > a > img {
+	width: 31px;
+	height: 31px;
+}
+
+.en_socseti_bottom > a {
+	margin: 0 10px;
+	opacity: 0.5;
+}
+
+.auth-buttons {
+	display: flex;
+	gap: 12px;
+	margin-left: auto;
+}
+
+.auth-buttons button {
+	background-color: black;
+	color: white;
+	border: 1px solid white;
+	padding: 8px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+	border-radius: 8px;
+	font-size: 16px;
+}
+
+.auth-buttons button:hover {
+	background-color: white;
+	color: black;
+}
+
+.form-container {
+	max-width: 320px;
+	margin: 40px auto;
+}
+
+.form {
+	background: #fff;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 12px;
+}
+
+.error {
+	color: #ff4d4f;
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+
+.input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 12px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+.submit-btn {
+	width: 100%;
+	background-color: #4f46e5;
+	color: white;
+	padding: 10px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+	background-color: #4338ca;
+}
+
+.switch-text {
+	font-size: 14px;
+	text-align: center;
+	margin-top: 12px;
+}
+
+.switch-btn {
+	color: #4f46e5;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 6;
+}
+
+.modal {
+	background: #fff;
+	padding: 20px;
+	width: 320px;
+}
+
+.title {
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 12px;
+	color: #000;
+}
+
+.error {
+	color: #ff0000;
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+
+.input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 12px;
+	border: 1px solid #000;
+	border-radius: 0d;
+	font-size: 14px;
+	background-color: #f9f9f9;
+	color: #000;
+}
+
+.submit-btn {
+	width: 100%;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	border: 1px solid #000;
+	border-radius: 0;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+	background-color: #333;
+}
+
+.switch-text {
+	font-size: 14px;
+	text-align: center;
+	margin-top: 12px;
+	color: #000;
+}
+
+.switch-btn {
+	color: #000;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.user-name {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: rgba(255, 255, 255, 1);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	padding: 1.5rem;
+	max-width: 56rem;
+	margin: 0 auto;
+}
+
+.sectorsGrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+}
+
+.sectorCard {
+	padding: 1rem;
+	border: 1px solid #e5e7eb;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: background-color 0.2s, border-color 0.2s;
+}
+
+.sectorCard:hover {
+	background-color: #f9fafb;
+}
+
+.selectedSector {
+	background-color: #eff6ff;
+	border-color: #3b82f6;
+}
+
+.seatMapContainer {
+	border: 1px solid #e5e7eb;
+	border-radius: 0.5rem;
+	padding: 1.5rem;
+}
+
+.seatMap {
+	width: 100%;
+	height: 400px;
+	border: 1px solid #e5e7eb;
+	border-radius: 0.5rem;
+	background-color: #f9fafb;
+}
+
+.seat {
+	cursor: pointer;
+	transition: opacity 0.2s;
+}
+
+.seat:hover {
+	opacity: 0.8;
+}
+
+.summaryPanel {
+	margin-top: 1.5rem;
+	padding: 1rem;
+	background-color: #f9fafb;
+	border-radius: 0.5rem;
+}
+
+.summaryContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.totalPrice {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #3b82f6;
+}
+
+.orderButton {
+	padding: 0.75rem 1.5rem;
+	background-color: #3b82f6;
+	color: white;
+	border: none;
+	border-radius: 0.5rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.orderButton:hover {
+	background-color: #2563eb;
+}
+
+.orderButton.disabled {
+	background-color: #d1d5db;
+	color: #6b7280;
+	cursor: not-allowed;
+}
+
+.agreementText {
+	margin-top: 1rem;
+	font-size: 0.875rem;
+	color: #6b7280;
+}

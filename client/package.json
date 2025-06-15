@@ -1,0 +1,41 @@
+{
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
+    "fetch": "^1.1.0",
+    "framer-motion": "^12.8.0",
+    "gsap": "^3.12.7",
+    "its-fine": "^2.0.0",
+    "jwt-decode": "^4.0.0",
+    "konva": "^9.3.20",
+    "mobx-react-lite": "^4.1.0",
+    "react": "^19.1.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^19.1.0",
+    "react-konva": "^19.0.3",
+    "react-konva-utils": "^1.1.0",
+    "react-router-dom": "^7.5.1",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "sass-embedded": "^1.87.0",
+    "vite": "^5.2.0"
+  }
+}

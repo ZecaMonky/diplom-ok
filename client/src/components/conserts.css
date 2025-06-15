@@ -1,0 +1,84 @@
+.wrapper {
+	max-width: 1646px;
+	width: 100%;
+	display: flex;
+}
+
+.poster {
+	margin: 120px 60px;
+}
+
+.poster div h3 {
+	font-size: 44px;
+	line-height: 40px;
+	font-weight: 500;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+}
+
+ul li {
+	font-size: 28px;
+	text-transform: uppercase;
+}
+
+.concert-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 2fr auto;
+	gap: 25px;
+	align-items: center;
+}
+
+.concert-list {
+	list-style: none;
+	padding: 0;
+	width: 100%;
+}
+
+.concert-item {
+	display: grid;
+	align-items: center;
+	padding: 15px;
+	border-bottom: 1px solid black;
+}
+
+.concert-item:last-child {
+	border-bottom: none;
+}
+
+.concert-button {
+	padding: 8px 16px;
+	background: black;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	transition: background 0.3s;
+	text-transform: uppercase;
+}
+
+.concert-button:hover {
+	background: #9b9b9b;
+}
+
+.concertTitle {
+	width: 100%;
+	padding: 20px 115px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between; /* Раздвигает h1 и кнопку по краям */
+}
+
+.concertTitle h1 {
+	flex-grow: 1; /* h1 занимает всё доступное пространство */
+	text-align: center; /* Центрирует текст */
+}
+
+.concertTitle div {
+	display: flex;
+	justify-content: flex-end; /* Выравнивает кнопку справа */
+}
+
+.allConcerts {
+	margin: 0 100px;
+}
