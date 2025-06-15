@@ -7,7 +7,12 @@ class CatalogController {
       const url = pageNum === 1
         ? 'https://invmerch.ru/collection/anacondaz?utm_source=anacondaz.ru&utm_medium=organic&utm_campaign=buy_on_site'
         : `https://invmerch.ru/collection/anacondaz?page=${pageNum}`;
-      const { data: html } = await axios.get(url);
+      const { data: html } = await axios.get(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+      });
+      console.log('HTML:', html.slice(0, 1000)); // Показываем первые 1000 символов html
       const $ = cheerio.load(html);
 
       const products = [];
@@ -36,6 +41,7 @@ class CatalogController {
         });
       });
 
+      console.log('Parsed products:', products);
       return products.filter(item => item.title && item.price);
     } catch (error) {
       console.error(`Error parsing page ${pageNum}:`, error);
@@ -46,7 +52,12 @@ class CatalogController {
   static async parseProduct(productId) {
     try {
       const url = `https://invmerch.ru/product/${productId}`;
-      const { data: html } = await axios.get(url);
+      const { data: html } = await axios.get(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+      });
+      console.log('HTML:', html.slice(0, 1000));
       const $ = cheerio.load(html);
 
       const getText = (selector) => $(selector).text().trim() || null;
@@ -57,7 +68,7 @@ class CatalogController {
         value: $(el).find('.property__content').text().trim()
       })).get();
 
-      return {
+      const result = {
         title: getText('.product__title'),
         price: getText('.product__price-cur'),
         description: getText('#tab-description .product-description'),
@@ -66,6 +77,8 @@ class CatalogController {
         availability: $('.product__not-available').length ? 'Out of stock' : 'In stock',
         size: getText('.option-value.is-active span')
       };
+      console.log('Parsed product:', result);
+      return result;
     } catch (error) {
       console.error(`Error parsing product ${productId}:`, error);
       return null;
