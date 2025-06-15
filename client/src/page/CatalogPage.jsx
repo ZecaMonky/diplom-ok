@@ -69,23 +69,25 @@ const CatalogPage = () => {
 		})
 
 		// Фильтрация по размеру
-		if (selectedSizes.length > 0) {
-			result = result.filter(product =>
-				selectedSizes.some(size => product.sizes.includes(size))
-			)
-		}
+		// if (selectedSizes.length > 0) {
+		//   result = result.filter(product =>
+		//     product.sizes && selectedSizes.some(size => product.sizes.includes(size))
+		//   )
+		// }
 
 		// Фильтрация по бренду
-		if (selectedBrands.length > 0) {
-			result = result.filter(product => selectedBrands.includes(product.brand))
-		}
+		// if (selectedBrands.length > 0) {
+		//   result = result.filter(product =>
+		//     product.brand && selectedBrands.includes(product.brand)
+		//   )
+		// }
 
 		// Фильтрация по составу
-		if (selectedCompositions.length > 0) {
-			result = result.filter(product =>
-				selectedCompositions.some(comp => product.composition.includes(comp))
-			)
-		}
+		// if (selectedCompositions.length > 0) {
+		//   result = result.filter(product =>
+		//     product.composition && selectedCompositions.some(comp => product.composition.includes(comp))
+		//   )
+		// }
 
 		// Сортировка
 		switch (sortOption) {
