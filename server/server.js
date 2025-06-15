@@ -8,8 +8,14 @@ const router = require('./routes/index')
 
 const app = express()
 
-// Базовые middleware
-app.use(cors())
+// Настройка CORS
+app.use(cors({
+	origin: process.env.CLIENT_URL || '*',
+	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+	allowedHeaders: ['Content-Type', 'Authorization']
+}))
+
+// Парсинг JSON
 app.use(express.json())
 
 // API маршруты
@@ -26,13 +32,13 @@ app.get('*', (req, res) => {
 // Обработка ошибок должна быть последней
 app.use(errorHandler)
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 5000
 
 const start = async () => {
 	try {
 		await sequelize.authenticate()
 		await sequelize.sync()
-		app.listen(PORT, () => console.log(`Server start on port ${PORT}`))
+		app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
 	} catch (e) {
 		console.log(e)
 	}

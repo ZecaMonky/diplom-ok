@@ -1,13 +1,11 @@
 const Router = require('express')
 const router = new Router()
 const userRotes = require('./user.route')
-const  consertRotes = require("./concert.route")
-const  catalogRotus = require("./catalog.router")
-
+const consertRotes = require("./concert.route")
+const catalogRoutes = require("./catalog.router")
 
 router.use('/user', userRotes)
+router.use('/catalog', catalogRoutes)
 router.use('/consert', consertRotes)
-router.use('/catalog', catalogRotus)
-
 
 module.exports = router
