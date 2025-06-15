@@ -7,13 +7,17 @@ const errorHandler = require("./middleware/ErrorHandingMiddleware")
 const router = require('./routes/index')
 
 const app = express()
-app.use(express.json())
+
+// Базовые middleware
 app.use(cors())
+app.use(express.json())
+
+// API маршруты
+app.use('/api', router)
 
 // Статические файлы
 app.use(express.static(path.join(__dirname, '../client/dist')))
-
-app.use('/api', router)
+app.use('/favicon.ico', express.static(path.join(__dirname, '../client/dist/favicon.ico')))
 
 // Обработка всех остальных маршрутов
 app.get('*', (req, res) => {
