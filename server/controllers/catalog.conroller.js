@@ -4,7 +4,8 @@ class CatalogController {
   static async parseCatalog(pageNum = 1) {
     const browser = await puppeteer.launch({
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH
     });
 
     try {
@@ -71,7 +72,8 @@ class CatalogController {
   static async parseProduct(productId) {
     const browser = await puppeteer.launch({
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH
     });
     try {
       const page = await browser.newPage();
