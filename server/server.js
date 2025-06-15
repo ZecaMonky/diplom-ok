@@ -17,13 +17,13 @@ app.use('/api', router)
 
 // Статические файлы
 app.use(express.static(path.join(__dirname, '../client/dist')))
-app.use('/favicon.ico', express.static(path.join(__dirname, '../client/dist/favicon.ico')))
 
 // Обработка всех остальных маршрутов
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/dist', 'index.html'))
 })
 
+// Обработка ошибок должна быть последней
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 3001
