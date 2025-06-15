@@ -7,13 +7,18 @@ class CatalogController {
       const url = pageNum === 1
         ? 'https://invmerch.ru/collection/anacondaz?utm_source=anacondaz.ru&utm_medium=organic&utm_campaign=buy_on_site'
         : `https://invmerch.ru/collection/anacondaz?page=${pageNum}`;
+      console.log('Fetching URL:', url);
+      
       const { data: html } = await axios.get(url, {
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
         }
       });
-      console.log('HTML:', html.slice(0, 1000)); // Показываем первые 1000 символов html
+      console.log('Response status:', html ? 'Success' : 'Failed');
+      console.log('HTML length:', html.length);
+      
       const $ = cheerio.load(html);
+      console.log('Found product-preview elements:', $('.product-preview').length);
 
       const products = [];
       $('.product-preview').each((i, el) => {
@@ -25,6 +30,8 @@ class CatalogController {
         const mainImage = $(el).find('.first-image img').attr('src') || $(el).find('.first-image source').attr('srcset');
         const secondImage = $(el).find('.second-image img').attr('src') || $(el).find('.second-image source').attr('srcset');
         const stickers = $(el).find('.sticker').map((i, s) => $(s).text().trim()).get();
+
+        console.log('Parsing product:', { title, price, id });
 
         products.push({
           id,
@@ -41,10 +48,14 @@ class CatalogController {
         });
       });
 
-      console.log('Parsed products:', products);
-      return products.filter(item => item.title && item.price);
+      console.log('Total products parsed:', products.length);
+      const filteredProducts = products.filter(item => item.title && item.price);
+      console.log('Products after filtering:', filteredProducts.length);
+      
+      return filteredProducts;
     } catch (error) {
-      console.error(`Error parsing page ${pageNum}:`, error);
+      console.error(`Error parsing page ${pageNum}:`, error.message);
+      console.error('Error stack:', error.stack);
       return [];
     }
   }

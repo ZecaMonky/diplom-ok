@@ -17,46 +17,46 @@ const CatalogPage = () => {
 	const [sortOption, setSortOption] = useState('default')
 
 	useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        // Проверяем, есть ли данные в localStorage
-        const cachedProducts = localStorage.getItem('cachedProducts');
-        
-        if (cachedProducts) {
-          const { data, timestamp } = JSON.parse(cachedProducts);
-          const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 часа в миллисекундах
-          
-          // Проверяем, не устарели ли данные
-          if (Date.now() - timestamp < CACHE_EXPIRATION_TIME) {
-            // Данные актуальны - используем их
-            setAllProducts(data);
-            setFilteredProducts(data);
-            setLoading(false);
-            return; // Выходим из функции, чтобы не делать лишний запрос
-          }
-        }
-        
-        // Если кэша нет или он устарел - загружаем новые данные
-        const data = await fetchAllCatalogItems();
-        setAllProducts(data);
-        setFilteredProducts(data);
-        
-        // Сохраняем в кэш с текущей меткой времени
-        const cacheData = {
-          data,
-          timestamp: Date.now()
-        };
-        localStorage.setItem('cachedProducts', JSON.stringify(cacheData));
-        
-      } catch (error) {
-        console.error('Error loading products:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-  
-    loadProducts();
-  }, []);
+		const loadProducts = async () => {
+			try {
+				// Проверяем, есть ли данные в localStorage
+				const cachedProducts = localStorage.getItem('cachedProducts');
+				
+				if (cachedProducts) {
+					const { data, timestamp } = JSON.parse(cachedProducts);
+					const CACHE_EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 часа в миллисекундах
+					
+					// Проверяем, не устарели ли данные
+					if (Date.now() - timestamp < CACHE_EXPIRATION_TIME) {
+						// Данные актуальны - используем их
+						setAllProducts(data);
+						setFilteredProducts(data);
+						setLoading(false);
+						return; // Выходим из функции, чтобы не делать лишний запрос
+					}
+				}
+				
+				// Если кэша нет или он устарел - загружаем новые данные
+				const data = await fetchAllCatalogItems();
+				setAllProducts(data);
+				setFilteredProducts(data);
+				
+				// Сохраняем в кэш с текущей меткой времени
+				const cacheData = {
+					data,
+					timestamp: Date.now()
+				};
+				localStorage.setItem('cachedProducts', JSON.stringify(cacheData));
+				
+			} catch (error) {
+				console.error('Error loading products:', error);
+			} finally {
+				setLoading(false);
+			}
+		};
+	
+		loadProducts();
+	}, []);
 
 	// Применение фильтров и сортировки
 	useEffect(() => {
